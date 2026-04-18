@@ -6,7 +6,8 @@ start time : 2026-04-18 14:15
 
 - [x] setup http/tcp suite 
 - [x] response with html
-- [ ] threaded server
+- [x] threaded server | 2026-04-18 19:46 > 2026-04-19 04:13
+- [ ] error handling
 - [ ] implement HTTPS protocol (TLS and SSL certificates) with `rustls`
 - [ ] html/css templating  
     - neocities guide & template
@@ -20,6 +21,7 @@ start time : 2026-04-18 14:15
 
 - OpenSSL web security 
 - Async
+- Experiment with `Futures` over closures
 
 > "Other options you might explore are the fork/join model, the single-threaded async I/O model, and the multithreaded async I/O model."
 
