@@ -1,4 +1,4 @@
-### rust based website
+### (WIP) personal website
 
 #### TODO :
 
