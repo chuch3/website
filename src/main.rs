@@ -39,3 +39,22 @@ fn handle_connection(mut stream: TcpStream) {
 
     stream.write_all(response.as_bytes()).unwrap();
 }
+
+#[cfg(test)]
+mod test {
+    use super::*;
+    #[test]
+
+    // Append `-- --no-capture` during tests
+    fn test_thread_pool_shutdown() {
+        let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
+        let pool = ThreadPool::new(4);
+
+        for stream in listener.incoming().take(2) {
+            // After ending iterator, causes compiler to drop threads
+            let stream = stream.unwrap();
+            pool.execute(|| handle_connection(stream));
+        }
+        println!("Shutting down");
+    }
+}

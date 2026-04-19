@@ -6,7 +6,8 @@ start time : 2026-04-18 14:15
 
 - [x] setup http/tcp suite 
 - [x] response with html
-- [x] threaded server | 2026-04-18 19:46 > 2026-04-19 04:13
+- [x] multi-threaded server | 2026-04-18 19:46 > 2026-04-19 04:13
+- [ ] cleanup | 2026-04-19 10:29 > 
 - [ ] error handling
 - [ ] implement HTTPS protocol (TLS and SSL certificates) with `rustls`
 - [ ] html/css templating  

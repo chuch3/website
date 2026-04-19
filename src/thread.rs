@@ -1,3 +1,4 @@
+use std::mem::take;
 use std::sync::{Arc, Mutex, mpsc};
 use std::thread::{self, JoinHandle};
 
@@ -10,7 +11,7 @@ type Job = Box<dyn FnOnce() + Send + 'static>;
 
 pub struct ThreadPool {
     workers: Vec<Worker>,
-    sender: mpsc::Sender<Job>,
+    sender: Option<mpsc::Sender<Job>>,
 }
 
 impl ThreadPool {
@@ -25,7 +26,10 @@ impl ThreadPool {
             workers.push(Worker::new(id, Arc::clone(&receiver)));
         }
 
-        Self { workers, sender }
+        Self {
+            workers,
+            sender: Some(sender),
+        }
     }
 
     // Similar `std::thread::spawn` arguments as we will use it create the thread pool
@@ -35,7 +39,17 @@ impl ThreadPool {
     {
         let job = Box::new(f);
         // No fail case as threads continue to execute if pools exists
-        self.sender.send(job).unwrap();
+        self.sender.as_ref().unwrap().send(job).unwrap();
+    }
+}
+
+impl Drop for ThreadPool {
+    fn drop(&mut self) {
+        drop(self.sender.take());
+        for worker in self.workers.drain(..) {
+            println!("Stopping worker {}", worker.id);
+            worker.thread.join().unwrap();
+        }
     }
 }
 
@@ -49,9 +63,21 @@ impl Worker {
         let thread = thread::spawn(move || {
             // Looping to keep checking on receiver, `recv()` blocks and waits for input
             loop {
-                let job = receiver.lock().unwrap().recv().unwrap();
-                println!("Worker {id} executing job!");
-                job();
+                let message = receiver
+                    .lock()
+                    .expect("Error! Mutex in poisoned state from panicked threads!")
+                    .recv();
+
+                match message {
+                    Ok(job) => {
+                        println!("Worker {id} executing job!");
+                        job();
+                    }
+                    Err(_) => {
+                        println!("Worker {id} disconnected; shutting down.");
+                        break;
+                    }
+                }
             }
         });
         Self { id, thread } // Since receiver is taken ownership by thread, we can't attribute it
