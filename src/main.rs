@@ -1,4 +1,5 @@
 use std::{
+    error::Error,
     fs,
     io::{BufReader, prelude::*},
     net::{TcpListener, TcpStream},
@@ -6,7 +7,10 @@ use std::{
     time::Duration,
 };
 
+mod context;
+mod response;
 mod thread;
+use response::build_get_response;
 use thread::ThreadPool;
 
 fn main() {
@@ -15,14 +19,34 @@ fn main() {
 
     for stream in listener.incoming() {
         let stream = stream.unwrap();
-        pool.execute(|| handle_connection(stream));
+        pool.execute(|| {
+            if let Err(e) = handle_request(stream) {
+                println!("Error handling connection {e}")
+            }
+        });
     }
 }
 
-fn handle_connection(mut stream: TcpStream) {
-    let buf_reader = BufReader::new(&stream);
-    let http_request = buf_reader.lines().next().unwrap().unwrap();
+fn handle_request(mut stream: TcpStream) -> Result<(), Box<dyn Error>> {
+    let mut buf_reader = BufReader::new(&stream);
+    let buf = buf_reader.fill_buf().unwrap();
 
+    println!("{}", std::str::from_utf8(buf).unwrap());
+    if buf.is_empty() {
+        println!("Received empty or invalid request");
+        return Ok(());
+    }
+
+    let mut headers = [httparse::EMPTY_HEADER; 16];
+    let mut req = httparse::Request::new(&mut headers);
+    let status = req.parse(buf)?;
+
+    let res = match req.method {
+        Some("GET") => build_get_response(req, status),
+        _ => {}
+    };
+
+    /*
     let (status_line, template) = match &http_request[..] {
         "GET / HTTP/1.1" => ("HTTP/1.1 200 OK", "template/response.html"),
         "GET /sleep HTTP/1.1" => {
@@ -38,6 +62,9 @@ fn handle_connection(mut stream: TcpStream) {
     let response = format!("{status_line}\r\nContent-Length: {length}\r\n\r\n{contents}");
 
     stream.write_all(response.as_bytes()).unwrap();
+
+    */
+    Ok(())
 }
 
 #[cfg(test)]
@@ -53,7 +80,11 @@ mod test {
         for stream in listener.incoming().take(2) {
             // After ending iterator, causes compiler to drop threads
             let stream = stream.unwrap();
-            pool.execute(|| handle_connection(stream));
+            pool.execute(|| {
+                if let Err(e) = handle_request(stream) {
+                    println!("Error handling connection {e}")
+                }
+            });
         }
         println!("Shutting down");
     }

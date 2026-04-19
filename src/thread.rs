@@ -15,16 +15,21 @@ pub struct ThreadPool {
 }
 
 impl ThreadPool {
-    // NOTE: implement `Result` error handling via `pub fn build() -> Result<ThreadPool, PoolCreationError>`
+    /// Create a new ThreadPool.
+    ///
+    /// The size is the number of threads in the pool.
+    ///
+    /// # Panics
+    ///
+    /// The `new` function will panic if the size is zero.
     pub fn new(size: usize) -> Self {
         assert!(size > 0);
-        let mut workers = Vec::with_capacity(size);
         let (sender, receiver) = mpsc::channel();
         let receiver = Arc::new(Mutex::new(receiver));
 
-        for id in 0..size {
-            workers.push(Worker::new(id, Arc::clone(&receiver)));
-        }
+        let workers = (0..size)
+            .map(|i| Worker::new(i, Arc::clone(&receiver)))
+            .collect();
 
         Self {
             workers,
