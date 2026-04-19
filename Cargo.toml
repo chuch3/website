@@ -4,3 +4,7 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+httparse = "1.10.1"
+minijinja = "2.19.0"
+http-bytes = "0.1.0"
+mime = "0.3.17"
