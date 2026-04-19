@@ -11,7 +11,7 @@ start time : 2026-04-18 14:15
 - [x] error handling 
 
 - [ ] HTTP reponse handler with parser and designated html as response body 
-    - [x] basic frame of response builder | 2026-04-19 20:06 > 
+    - [x] basic frame of response builder | 2026-04-19 20:06 > 2026-04-20 01:59
     - [x] creating jinja environment and context | 2026-04-19 22:51 > 2026-04-20 01:28
     - [ ] Add jinja and template bytes convertion on html body 
     - [ ] Create response and write into tcp stream as bytes
