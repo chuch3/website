@@ -10,17 +10,35 @@ start time : 2026-04-18 14:15
 - [x] cleanup | 2026-04-19 10:29 > 2026-04-19 11:33
 - [x] error handling 
 
-- [ ] HTTP reponse handler with parser and designated html as response body 
+- [x] HTTP reponse handler with parser and designated html as response body 
     - [x] basic frame of response builder | 2026-04-19 20:06 > 2026-04-20 01:59
     - [x] creating jinja environment and context | 2026-04-19 22:51 > 2026-04-20 01:28
-    - [ ] Add jinja and template bytes convertion on html body 
-    - [ ] Create response and write into tcp stream as bytes
-    - [ ] Add mock template to test response and minijinja 
-- [ ] implement HTTPS protocol (TLS and SSL certificates) with `rustls`
+    - [x] Add jinja and template bytes convertion on html body | 2026-04-20 14:09
+    - [x] Create response and write into tcp stream as bytes | 2026-04-20 18:12
+    - [x] Add mock template to test response and minijinja 
+
+
 - [ ] html/css templating  
     - neocities guide & template
-    - collage with card based template
-- [ ] host on github
+    - base template to hold base jinja template
+    - Web structure
+        - About me
+        - Home page
+        - Project demos 
+        - Guestbooks
+        - Blog post for progress
+        - Social links
+        - gifs, css tricks, 
+            - squishing
+            - glow 
+            - gifs
+            - stickers
+            - static images (redirect home button)
+            - collage with card based template
+
+- [ ] implement HTTPS protocol (TLS and SSL certificates) with `rustls`
+
+- [ ] Host on github
     - [ ] Base URL and path on open graph base.html and global variable for jinja environment
 
 

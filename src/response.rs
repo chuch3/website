@@ -1,13 +1,15 @@
 use crate::context::Context;
-use http_bytes::{
-    Response,
-    http::{Uri, header, response::Builder},
-};
+use http_bytes::http::{Error, Response, Uri, header, response::Builder};
 use httparse::{Request, Status};
+use mime;
 use minijinja::{Environment, context};
 
-pub fn build_get_response(ctx: &Context, req: Request, status: Status<usize>) {
-    let res_builder = Builder::new();
+pub fn build_get_response(
+    ctx: &Context,
+    req: Request,
+    status: Status<usize>,
+) -> Result<Response<Vec<u8>>, Error> {
+    let mut res_builder = Builder::new();
 
     let req_path = { if let Some(path) = req.path { path } else { "" } };
 
@@ -24,31 +26,47 @@ pub fn build_get_response(ctx: &Context, req: Request, status: Status<usize>) {
 
     let split_path: Vec<_> = uri_path.split("/").collect();
 
-    // TODO: Add mock template to test response and minijinja
+    split_path
+        .iter()
+        .enumerate()
+        .map(|(i, path)| println!("{}, {}", i, path));
+
+    // TODO: Add more templates on context
     let (template, page_context) = match *split_path.get(0).unwrap_or(&"") {
-        "" => ("response.html", context! {}),
+        "" => ("base.html", context! {}),
         _ => ("error.html", context! {}),
     };
 
     // Page context holds the `Context` struct to access its values.
     // Its attribute values has to be imported beforehand during instantiation.
-    let jinja_context = context! {
+    let jinja_ctx = context! {
         page_context => page_context,
         uri_path => uri_path,
         // err => err,
     };
 
-    let body = to_bytes(template, jinja_context, ctx);
+    dbg!(&jinja_ctx);
 
-    // TODO: Create context module with jinja environment and context
-    //
-    // - Get template, render the context for template and then convert result to bytes
+    let body = jinja_to_bytes(template, jinja_ctx, &ctx.jinja_env).unwrap();
 
-    //let body = ;
-
-    //res_builder.header(header::CONTENT_TYPE, mime::TEXT_HTML).body()
+    res_builder
+        .header(header::CONTENT_TYPE, mime::TEXT_HTML.essence_str())
+        .header(header::CONTENT_LENGTH, body.len())
+        .body(body)
 }
 
-fn to_bytes(template: &str, jinja_context: minijinja::Value, ctx: &Context) {
-    todo!()
+fn jinja_to_bytes<'a>(
+    template: &str,
+    jinja_ctx: minijinja::Value,
+    jinja_env: &Environment<'a>,
+) -> Result<Vec<u8>, minijinja::Error> {
+    jinja_env
+        .get_template(template)
+        .and_then(|t| t.render(jinja_ctx))
+        .map(|s| s.into_bytes())
+}
+
+pub fn cont() -> Result<Response<Vec<u8>>, Error> {
+    // Empty body with continue status code
+    Builder::new().status(100).body(vec![])
 }

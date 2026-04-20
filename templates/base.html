@@ -1,0 +1,118 @@
+<!doctype html>
+
+<html lang="en">
+	<head>
+		<base href="{{ BASE_URL }}">
+		<link rel="stylesheet" type="text/css" href="static/style.css">
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>{% block title %}{% endblock %}</title>
+		<meta name="description" content="{% block description %}{% endblock %}">
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="{{ BASE_URL }}{{ path }}">
+		<meta property="og:title" content="{{ self.title() }}">
+		<meta property="og:description" content="{{ self.description() }}">
+<!--		<meta property="og:image" content="YOUR_IMAGE_URL">-->
+
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary"/>
+		<meta name="twitter:site" content="@_smsdk">
+		<meta name="twitter:creator" content="@_smsdk">
+		<meta property="twitter:url" content="{{ BASE_URL }}{{ path }}">
+		<meta property="twitter:title" content="{{ self.title() }}">
+		<meta property="twitter:description" content="{{ self.description() }}">
+		<meta property="twitter:image" content="{{ BASE_URL }}/static/favicons/favicon-144-precomposed.png">
+
+		<link rel="icon" href="static/favicons/favicon.ico">
+
+		<script src="https://kit.fontawesome.com/ca68633975.js" crossorigin="anonymous"></script>
+	</head>
+
+	<body>
+        <div id="contents">
+			<a href="/">
+				<img src="static/images/logo.png" id="text-logo" alt="nick's cool website logo" width="500px">
+			</a>
+			<nav>
+				<img src="static/images/chicken3.gif" id="chicken">
+				<a href="javascript:void(0);" id="burger" onclick="toggleBurger()"><i id="burger-icon" class="fa fa-bars"></i></a>
+				<ul id="page-navbar">
+					<li><a href="/" class="no-underline">home</a></li>
+					<li><a href="music" class="no-underline">music</a></li>
+					<li><a href="blog" class="no-underline">blog</a></li>
+					<li><a href="guestbook" class="no-underline">guestbook</a></li>
+				</ul>
+				<ul id="social-navbar">
+					<li>
+						<a href="https://github.com/breitnw" target="_blank" class="no-underline">
+							<i class="fa-brands fa-github-alt"></i>
+						</a>
+					</li>
+					<li>
+						<a href="https://twitter.com/_smsdk" target="_blank" class="no-underline">
+							<i class="fa-brands fa-twitter"></i>
+						</a>
+					</li>
+					<li>
+						<a href="https://www.instagram.com/breitnw/" target="_blank" class="no-underline">
+							<i class="fa-brands fa-instagram"></i>
+						</a>
+					</li>
+				</ul>
+			</nav>
+			<div id="burger-menu">
+				<ul>
+					<li><a href="/" class="no-underline">software</a></li>
+					<li><a href="music" class="no-underline">music</a></li>
+					<li><a href="blog" class="no-underline">blog</a></li>
+					<li><a href="guestbook" class="no-underline">guestbook</a></li>
+				</ul>
+			</div>
+			{% if err is defined and not err is none %}
+			<div id="alert">
+				{{ err }}
+			</div>
+			{% endif %}
+
+            {% block contents %}{% endblock %}
+        </div>
+
+		<footer>
+			<a href="https://github.com/breitnw/mndco11age" target="_blank" class="no-underline">
+				<i class="fa-brands fa-github"></i> 2026 breitnw
+			</a>
+            <p>
+                Please do not use the content on my website for AI training.
+            </p>
+		</footer>
+
+		<script>
+			let bi = document.getElementById("burger-icon");
+			let bm = document.getElementById("burger-menu");
+			bm.style.display = "none"
+			function toggleBurger() {
+				(bm.style.display === "none") ? openBurger() : closeBurger()
+			}
+			function openBurger() {
+				bm.style.display = "block";
+				bi.classList.remove("fa-bars");
+				bi.classList.add("fa-xmark");
+			}
+			function closeBurger() {
+				bm.style.display = "none";
+				bi.classList.remove("fa-xmark");
+				bi.classList.add("fa-bars");
+			}
+			addEventListener("resize", closeBurger);
+
+			chickens = ["chicken1.gif", "chicken2.gif", "chicken3.gif"];
+			random_chicken = chickens[Math.floor(Math.random() * chickens.length)];
+			document.getElementById("chicken")
+					.setAttribute("src", "static/images/" + random_chicken);
+		</script>
+	</body>
+</html>

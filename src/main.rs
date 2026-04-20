@@ -1,15 +1,13 @@
 use std::{
     error::Error,
-    fs,
     io::{BufReader, prelude::*},
     net::{TcpListener, TcpStream},
-    thread::sleep,
-    time::Duration,
 };
 
 mod context;
 mod response;
 mod thread;
+use context::Context;
 use response::build_get_response;
 use thread::ThreadPool;
 
@@ -17,17 +15,17 @@ fn main() {
     let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
     let pool = ThreadPool::new(4);
 
-    for stream in listener.incoming() {
-        let stream = stream.unwrap();
-        pool.execute(|| {
-            if let Err(e) = handle_request(stream) {
+    for tcp_stream in listener.incoming() {
+        let tcp_stream = tcp_stream.unwrap();
+        pool.execute(move |ctx| {
+            if let Err(e) = handle_request(tcp_stream, ctx) {
                 println!("Error handling connection {e}")
             }
         });
     }
 }
 
-fn handle_request(mut stream: TcpStream) -> Result<(), Box<dyn Error>> {
+fn handle_request(mut stream: TcpStream, ctx: &Context) -> Result<(), Box<dyn Error>> {
     let mut buf_reader = BufReader::new(&stream);
     let buf = buf_reader.fill_buf().unwrap();
 
@@ -42,28 +40,14 @@ fn handle_request(mut stream: TcpStream) -> Result<(), Box<dyn Error>> {
     let status = req.parse(buf)?;
 
     let res = match req.method {
-        Some("GET") => build_get_response(req, status),
-        _ => {}
+        Some("GET") => build_get_response(ctx, req, status)?,
+        Some(_) => todo!(), // Error page here
+        None => response::cont()?,
     };
 
-    /*
-    let (status_line, template) = match &http_request[..] {
-        "GET / HTTP/1.1" => ("HTTP/1.1 200 OK", "template/response.html"),
-        "GET /sleep HTTP/1.1" => {
-            sleep(Duration::from_secs(5));
-            ("HTTP/1.1 200 OK", "template/response.html")
-        }
-        _ => ("HTTP/1.1 404 NOT FOUND", "template/error.html"),
-    };
+    stream.write_all(&http_bytes::response_header_to_vec(&res))?;
+    stream.write_all(res.body())?;
 
-    let contents = fs::read_to_string(template).expect("File should be in directory");
-    let length = contents.len();
-
-    let response = format!("{status_line}\r\nContent-Length: {length}\r\n\r\n{contents}");
-
-    stream.write_all(response.as_bytes()).unwrap();
-
-    */
     Ok(())
 }
 
@@ -80,8 +64,8 @@ mod test {
         for stream in listener.incoming().take(2) {
             // After ending iterator, causes compiler to drop threads
             let stream = stream.unwrap();
-            pool.execute(|| {
-                if let Err(e) = handle_request(stream) {
+            pool.execute(move |ctx| {
+                if let Err(e) = handle_request(stream, ctx) {
                     println!("Error handling connection {e}")
                 }
             });

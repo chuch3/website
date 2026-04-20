@@ -1,4 +1,4 @@
-use std::mem::take;
+use crate::context::Context;
 use std::sync::{Arc, Mutex, mpsc};
 use std::thread::{self, JoinHandle};
 
@@ -7,7 +7,7 @@ use std::thread::{self, JoinHandle};
 // `FnOnce` matches single time request
 //
 // Use `Box<dyn ...>` to define trait names
-type Job = Box<dyn FnOnce() + Send + 'static>;
+type Job = Box<dyn FnOnce(&Context) + Send + 'static>;
 
 pub struct ThreadPool {
     workers: Vec<Worker>,
@@ -40,7 +40,7 @@ impl ThreadPool {
     // Similar `std::thread::spawn` arguments as we will use it create the thread pool
     pub fn execute<F>(&self, f: F)
     where
-        F: FnOnce() + Send + 'static,
+        F: FnOnce(&Context) + Send + 'static,
     {
         let job = Box::new(f);
         // No fail case as threads continue to execute if pools exists
@@ -72,11 +72,12 @@ impl Worker {
                     .lock()
                     .expect("Error! Mutex in poisoned state from panicked threads!")
                     .recv();
+                let thread_ctx = Context::new();
 
                 match message {
                     Ok(job) => {
                         println!("Worker {id} executing job!");
-                        job();
+                        job(&thread_ctx);
                     }
                     Err(_) => {
                         println!("Worker {id} disconnected; shutting down.");
