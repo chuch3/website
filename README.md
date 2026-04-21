@@ -17,8 +17,9 @@ start time : 2026-04-18 14:15
     - [x] Create response and write into tcp stream as bytes | 2026-04-20 18:12
     - [x] Add mock template to test response and minijinja 
 
-
+- [ ] Submit mime header and static resource into response when requested
 - [ ] html/css templating  
+    - [ ] Home page
     - neocities guide & template
     - base template to hold base jinja template
     - Web structure
@@ -35,6 +36,7 @@ start time : 2026-04-18 14:15
             - stickers
             - static images (redirect home button)
             - collage with card based template
+- [ ] Set base url to take on environment var host url
 
 - [ ] implement HTTPS protocol (TLS and SSL certificates) with `rustls`
 
@@ -51,6 +53,7 @@ start time : 2026-04-18 14:15
 - Experiment with `Futures` over closures
 
 > "Other options you might explore are the fork/join model, the single-threaded async I/O model, and the multithreaded async I/O model."
+
 
 ### Reference 
 

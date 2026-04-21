@@ -3,6 +3,8 @@ use http_bytes::http::{Error, Response, Uri, header, response::Builder};
 use httparse::{Request, Status};
 use mime;
 use minijinja::{Environment, context};
+use new_mime_guess;
+use std::fs;
 
 pub fn build_get_response(
     ctx: &Context,
@@ -17,33 +19,30 @@ pub fn build_get_response(
 
     let uri = req_path.parse::<Uri>().unwrap();
 
-    // Query is not needed for basic web browsing
     let (uri_path, query) = (uri.path(), uri.query());
 
     dbg!(uri_path, query);
 
-    // let (uri_path, _) = req_path.split_once("?").unwrap_or((req_path, ""));
+    let path_list: Vec<_> = uri_path.split("/").skip(1).filter(|p| *p != "").collect();
 
-    let split_path: Vec<_> = uri_path.split("/").collect();
-
-    split_path
-        .iter()
-        .enumerate()
-        .map(|(i, path)| println!("{}, {}", i, path));
-
-    let (template, page_context) = match *split_path.get(0).unwrap_or(&"") {
+    let (template, page_context) = match *path_list.get(0).unwrap_or(&"") {
         "" => ("base.html", context! {}),
         "static" => {
-            return res_builder
-                .header(header::CONTENT_TYPE, mime::TEXT_HTML.essence_str())
-                .header(header::CONTENT_LENGTH, body.len())
-                .body(body);
+            let mime_type = new_mime_guess::from_path(uri_path).first_or(mime::TEXT_HTML);
+
+            if let Ok(file) = fs::read(&uri_path[1..]) {
+                return res_builder
+                    .header(header::CONTENT_TYPE, mime_type.essence_str())
+                    .header(header::CONTENT_LENGTH, file.len())
+                    .body(file);
+            } else {
+                return res_builder.status(404).body(vec![]);
+            }
         }
         _ => ("error.html", context! {}),
     };
 
-    // Page context holds the `Context` struct to access its values.
-    // Attribute values has to be imported beforehand during instantiation.
+    // Page context holds the `Context` struct to access its values. Attribute values has to be imported beforehand during instantiation.
     let jinja_ctx = context! {
         page_context => page_context,
         uri_path => uri_path,
