@@ -23,7 +23,9 @@ pub fn build_get_response(
 
     dbg!(uri_path, query);
 
-    let path_list: Vec<_> = uri_path.split("/").skip(1).filter(|p| *p != "").collect();
+    let path_list: Vec<_> = uri_path.split("/").skip(1).collect();
+
+    dbg!(&path_list);
 
     let (template, page_context) = match *path_list.get(0).unwrap_or(&"") {
         "" => ("base.html", context! {}),
@@ -31,6 +33,8 @@ pub fn build_get_response(
             let mime_type = new_mime_guess::from_path(uri_path).first_or(mime::TEXT_HTML);
 
             if let Ok(file) = fs::read(&uri_path[1..]) {
+                // MIME is just for standard format, sending the static resource is
+                // enough for the html page.
                 return res_builder
                     .header(header::CONTENT_TYPE, mime_type.essence_str())
                     .header(header::CONTENT_LENGTH, file.len())
@@ -46,7 +50,7 @@ pub fn build_get_response(
     let jinja_ctx = context! {
         page_context => page_context,
         uri_path => uri_path,
-        // err => err,
+        // err => err, // should be taken from the query parameters
     };
 
     dbg!(&jinja_ctx);

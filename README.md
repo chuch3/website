@@ -16,9 +16,15 @@ start time : 2026-04-18 14:15
     - [x] Add jinja and template bytes convertion on html body | 2026-04-20 14:09
     - [x] Create response and write into tcp stream as bytes | 2026-04-20 18:12
     - [x] Add mock template to test response and minijinja 
+- [x] Submit mime header and static resource into response when requested
 
-- [ ] Submit mime header and static resource into response when requested
-- [ ] html/css templating  
+####  FRONT END HELL 
+
+- [ ] center div with gridbox
+- [ ] structure html divs
+- [ ] organize coloring divs, adding logo in position, left-right padding homepage
+
+- [ ] html/css templating | 2026-04-22 01:09 > 
     - [ ] Home page
     - neocities guide & template
     - base template to hold base jinja template
