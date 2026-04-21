@@ -31,14 +31,19 @@ pub fn build_get_response(
         .enumerate()
         .map(|(i, path)| println!("{}, {}", i, path));
 
-    // TODO: Add more templates on context
     let (template, page_context) = match *split_path.get(0).unwrap_or(&"") {
         "" => ("base.html", context! {}),
+        "static" => {
+            return res_builder
+                .header(header::CONTENT_TYPE, mime::TEXT_HTML.essence_str())
+                .header(header::CONTENT_LENGTH, body.len())
+                .body(body);
+        }
         _ => ("error.html", context! {}),
     };
 
     // Page context holds the `Context` struct to access its values.
-    // Its attribute values has to be imported beforehand during instantiation.
+    // Attribute values has to be imported beforehand during instantiation.
     let jinja_ctx = context! {
         page_context => page_context,
         uri_path => uri_path,

@@ -1,3 +1,4 @@
+use dotenv_codegen::dotenv;
 use std::{
     error::Error,
     io::{BufReader, prelude::*},
@@ -12,7 +13,7 @@ use response::build_get_response;
 use thread::ThreadPool;
 
 fn main() {
-    let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
+    let listener = TcpListener::bind(dotenv!("DOMAIN_NAME")).unwrap();
     let pool = ThreadPool::new(4);
 
     for tcp_stream in listener.incoming() {
