@@ -32,6 +32,8 @@ pub fn build_get_response(
         "static" => {
             let mime_type = new_mime_guess::from_path(uri_path).first_or(mime::TEXT_HTML);
 
+            dbg!(&mime_type);
+
             if let Ok(file) = fs::read(&uri_path[1..]) {
                 // MIME is just for standard format, sending the static resource is
                 // enough for the html page.

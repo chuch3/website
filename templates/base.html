@@ -1,50 +1,45 @@
 <!doctype html>
 <html lang="en">
 
+<!-- oomm, my nasty html code. taken bit and bits from the world wide web. -->
+
 <head>
     <base href="{{ BASE_URL }}">
-    <link rel="stylesheet" type="text/css" href="/static/style.css"> 
+    <link rel="stylesheet" type="text/css" href="static/style.css">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{% block description %}{% endblock %}">
-    <link rel="icon" href="/static/favicons/favicon.ico">
+    <link rel="icon" href="static/favicons/favicon.ico">
 </head>
 
-<body style="margin: 0px; padding: 0px; font-family: 'Trebuchet MS',verdana;">
+<body>
 
-<div id="contents">
-    <table width="100%" style="height: 100%;" cellpadding="10" cellspacing="0" border="0">
-    <tr>
+    <div id="container">
+        <table width="100%" style="height: 100%;" cellpadding="10" cellspacing="0" border="0">
+            <a href="/"><img src="static/images/cat01_e0.gif"></a>
 
-    <!-- ============ HEADER SECTION ============== -->
-    <td colspan="2" style="height: 100px;" bgcolor="#777d6a"><h1>Website Logo</h1></td></tr>
+            <nav class="navbar">
+                <li class="nav_page">
+                    <a href="/">home</a>
+                    <a href="/">guestbook</a>
+                    <a href="/">art</a>
+                    <a href="/">notes</a>
+                </li>
+            </nav>
 
+            <td width="25%" valign="top">&nbsp;</td>
 
-    <!-- ============ NAVIGATION BAR SECTION ============== -->
-    <tr><td colspan="2" valign="middle" height="30" bgcolor="#a9ae9f"><a href="#">Home</a></td></tr>
+            <div class="footer">
+                <tr>
+                    <td class="footer_text" height="20">polych © 2026</td>
+                </tr>
+            </div>
 
-    <tr>
+            <div class="cow">
+                <img src=" static/images/cow.gif" alt="">
+            </div>
+        </table>
 
-    <!-- ============ RIGHT COLUMN (CONTENT) ============== -->
-    <td width="80%" valign="top" bgcolor="#d2d8c7">
+    </div>
 
-    <h2>Page heading</h2>
-
-    Here's a two column layout with header, navigation bar and footer sections. The first two table rows create the header and the navigation bar and contain a single table cell each. These table cells use the colspan="2" attribute-value pair.<br>
-    <br>
-
-    The third table row contains two table cells which create the menu column (left) and the content column (right). The colspan attribute is not set in either so they default to colspan="1".<br>
-    <br>
-
-    The fourth table row creates the footer. Like the header and the navigation bar, it contains a single table cell which uses the colspan="2" attribute-value pair.</td></tr>
-
-    <!-- ============ FOOTER SECTION ============== -->
-    <tr><td colspan="2" align="center" height="20" bgcolor="#777d6a">Copyright ©</td></tr>
-    </table>
-</div>
-    </body>
+</body>
 
 </html>
-
-
-

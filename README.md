@@ -20,12 +20,12 @@ start time : 2026-04-18 14:15
 
 ####  FRONT END HELL 
 
-- [ ] center div with gridbox
-- [ ] structure html divs
+- [ ] css not sent with html
 - [ ] organize coloring divs, adding logo in position, left-right padding homepage
 
 - [ ] html/css templating | 2026-04-22 01:09 > 
     - [ ] Home page
+    - [x] center div with gridbox
     - neocities guide & template
     - base template to hold base jinja template
     - Web structure
