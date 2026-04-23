@@ -20,18 +20,13 @@ start time : 2026-04-18 14:15
 
 ####  FRONT END HELL 
 
-- [ ] css not sent with html
-- [ ] organize coloring divs, adding logo in position, left-right padding homepage
-
 - [ ] html/css templating | 2026-04-22 01:09 > 
     - [ ] Home page
-    - [x] center div with gridbox
+        - [x] About me
+        - [ ] Project demos 
     - neocities guide & template
     - base template to hold base jinja template
     - Web structure
-        - About me
-        - Home page
-        - Project demos 
         - Guestbooks
         - Blog post for progress
         - Social links

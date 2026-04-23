@@ -5,41 +5,59 @@
 
 <head>
     <base href="{{ BASE_URL }}">
+    <title>poly's site</title>
     <link rel="stylesheet" type="text/css" href="static/style.css">
-    <meta charset="utf-8">
     <link rel="icon" href="static/favicons/favicon.ico">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
 
     <div id="container">
         <table width="100%" style="height: 100%;" cellpadding="10" cellspacing="0" border="0">
-            <a href="/"><img src="static/images/cat01_e0.gif"></a>
+            <a href="/"><img class="cat1" src="static/images/cat1.gif"></a>
 
-            <nav class="navbar">
-                <li class="nav_page">
-                    <a href="/">home</a>
-                    <a href="/">guestbook</a>
-                    <a href="/">art</a>
-                    <a href="/">notes</a>
-                </li>
+            <nav>
+                <ul class="nav-pages">
+                    <li><a href="/">home</a></li>
+                    <li><a href="/">art</a></li>
+                    <li><a href="/">notes</a></li>
+                    <li><a href="/">guestbook</a></li>
+                </ul>
             </nav>
 
-            <td width="25%" valign="top">&nbsp;</td>
+            <div class="home-page-body">
+                <div class="project-container"> </div>
+                <div class="sidebar-container">
+                    <div class="about-me-text">
+                        <h3>about me</h3>
+                        <p>
+                            lorem ipsum uuuuuuhhhhhhhh ooga duh herp boogatu!
+                        </p>
 
+                        gmail : polychch3@_.com
+                    </div>
+                </div>
+            </div>
+
+            <td width="25%" valign="top">&nbsp;</td>
             <div class="footer">
                 <tr>
-                    <td class="footer_text" height="20">polych © 2026</td>
+                    <td class="footer-text" height="20">polych © 2026 and beyond</td>
                 </tr>
             </div>
 
             <div class="cow">
-                <img src=" static/images/cow.gif" alt="">
+                <img src="static/images/cow.gif" alt="">
             </div>
         </table>
 
     </div>
+    <script src="static/scripts/oneko.js"></script>
 
 </body>
+
 
 </html>
