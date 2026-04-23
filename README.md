@@ -24,19 +24,14 @@ start time : 2026-04-18 14:15
     - [ ] Home page
         - [x] About me
         - [ ] Project demos 
-    - neocities guide & template
+        - Cow moo on click
+        - hover nav text effects
     - base template to hold base jinja template
     - Web structure
         - Guestbooks
         - Blog post for progress
         - Social links
-        - gifs, css tricks, 
-            - squishing
-            - glow 
-            - gifs
-            - stickers
-            - static images (redirect home button)
-            - collage with card based template
+        - collage with card based template
 - [ ] Set base url to take on environment var host url
 
 - [ ] implement HTTPS protocol (TLS and SSL certificates) with `rustls`

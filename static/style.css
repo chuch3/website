@@ -6,6 +6,8 @@ body {
     width: auto;
     margin-left: auto;
     margin-right: auto;
+    color: #545454;
+    background: url("../static/images/noise.svg");
 }
 
 nav {
@@ -26,6 +28,7 @@ nav {
     max-width: 50%;
     transition: 0.2s;
     transition-timing-function: ease-out;
+    image-rendering: pixelated;
 }
 
 .cat1:hover {
@@ -41,7 +44,7 @@ nav {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .nav-pages li {
@@ -53,39 +56,78 @@ nav {
     text-align: center;
     padding-right: 0.5rem;
     text-decoration: none;
-    text-decoration: none;
     color: #636361;
 }
 
+.nav-pages li a span {
+    display: inline-block;
+}
+
+.nav-pages li a:hover span {
+    animation: wavy 1.3s ease infinite;
+}
+
+@keyframes wavy {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+
 
 .project-container {
-    border-style: outset;
+    border-style: double;
+    border-color: #7d7d7d;
     flex: 50%;
 }
 
+.project-text {
+    margin: 1rem;
+}
+
 .sidebar-container {
-    border-style: outset;
+    border-style: double;
+    border-color: #7d7d7d;
     flex: 20%;
 }
 
 .about-me-text {
-    margin-left: 2rem;
-    margin-right: 2rem;
-    margin-bottom: 2rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #262626;
+    border-color: #7d7d7d;
+}
+
+
+.footer {
+    padding-top: 5rem;
+    color: #636361;
 }
 
 .footer-text {
     text-align: center;
 }
 
+.footer-text a {
+    text-decoration: none;
+    color: #636361;
+}
 
-.cow {
+
+.corner-friend {
     position: absolute;
     right: 3rem;
     bottom: 3rem;
 }
 
-.cow:hover {
+.corner-friend:hover {
     animation: shake 0.5s;
 
     /* When the animation is finished, start again */
@@ -140,5 +182,4 @@ nav {
 
 .no-marker {
     display: block;
-
 }
