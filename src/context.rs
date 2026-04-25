@@ -15,3 +15,5 @@ impl<'a> Context<'a> {
         Context { jinja_env }
     }
 }
+
+pub struct Project {}

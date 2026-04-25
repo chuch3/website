@@ -64,24 +64,15 @@ nav {
 }
 
 .nav-pages li a:hover span {
-    animation: wavy 1.3s ease infinite;
+    animation: wavy 1.5s ease infinite, rainbow 3.5s linear infinite;
 }
-
-@keyframes wavy {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-8px);
-    }
-}
-
 
 
 .project-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    grid-template-rows: masonry;
+    gap: 10px;
     border-style: double;
     border-color: #7d7d7d;
     flex: 50%;
@@ -120,7 +111,6 @@ nav {
     color: #636361;
 }
 
-
 .corner-friend {
     position: absolute;
     right: 3rem;
@@ -128,11 +118,10 @@ nav {
 }
 
 .corner-friend:hover {
-    animation: shake 0.5s;
-
-    /* When the animation is finished, start again */
-    animation-iteration-count: infinite;
+    animation: shake 0.5s infinite;
 }
+
+/*----------------------------------------------------------------*/
 
 @keyframes shake {
     0% {
@@ -180,6 +169,41 @@ nav {
     }
 }
 
-.no-marker {
-    display: block;
+
+@keyframes wavy {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-0.5rem);
+    }
+}
+
+
+@keyframes rainbow {
+
+    100%,
+    0% {
+        color: #C0C0C0;
+    }
+
+    20% {
+        color: #A9A9A9;
+    }
+
+    40% {
+        color: #808080;
+    }
+
+    60% {
+        color: #696969;
+    }
+
+    80% {
+        color: #2F4F4F;
+    }
+
 }

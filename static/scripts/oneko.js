@@ -86,16 +86,18 @@
     };
 
     function init() {
-        let nekoFile = "static/images/oneko.gif"
-        const curScript = document.currentScript
+        let nekoFile = "static/images/oneko.gif";
+        const curScript = document.currentScript;
         if (curScript && curScript.dataset.cat) {
-            nekoFile = curScript.dataset.cat
+            nekoFile = curScript.dataset.cat;
         }
         if (curScript && curScript.dataset.persistPosition) {
             if (curScript.dataset.persistPosition === "") {
                 persistPosition = true;
             } else {
-                persistPosition = JSON.parse(curScript.dataset.persistPosition.toLowerCase());
+                persistPosition = JSON.parse(
+                    curScript.dataset.persistPosition.toLowerCase(),
+                );
             }
         }
 
@@ -129,24 +131,27 @@
 
         document.body.appendChild(nekoEl);
 
-        document.addEventListener("mousemove", function(event) {
+        document.addEventListener("mousemove", function (event) {
             mousePosX = event.clientX;
             mousePosY = event.clientY;
         });
 
         if (persistPosition) {
-            window.addEventListener("beforeunload", function(event) {
-                window.localStorage.setItem("oneko", JSON.stringify({
-                    nekoPosX: nekoPosX,
-                    nekoPosY: nekoPosY,
-                    mousePosX: mousePosX,
-                    mousePosY: mousePosY,
-                    frameCount: frameCount,
-                    idleTime: idleTime,
-                    idleAnimation: idleAnimation,
-                    idleAnimationFrame: idleAnimationFrame,
-                    bgPos: nekoEl.style.backgroundPosition
-                }));
+            window.addEventListener("beforeunload", function (event) {
+                window.localStorage.setItem(
+                    "oneko",
+                    JSON.stringify({
+                        nekoPosX: nekoPosX,
+                        nekoPosY: nekoPosY,
+                        mousePosX: mousePosX,
+                        mousePosY: mousePosY,
+                        frameCount: frameCount,
+                        idleTime: idleTime,
+                        idleAnimation: idleAnimation,
+                        idleAnimationFrame: idleAnimationFrame,
+                        bgPos: nekoEl.style.backgroundPosition,
+                    }),
+                );
             });
         }
 
@@ -204,7 +209,7 @@
             }
             idleAnimation =
                 avalibleIdleAnimations[
-                Math.floor(Math.random() * avalibleIdleAnimations.length)
+                    Math.floor(Math.random() * avalibleIdleAnimations.length)
                 ];
         }
 

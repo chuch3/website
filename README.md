@@ -20,12 +20,21 @@ start time : 2026-04-18 14:15
 
 ####  FRONT END HELL 
 
+> 2026-04-25 15:32 > ...
+
+- [ ] masonry layout on projects, check breitnw and neocities 
+    - [ ] Jinja page descriptors
+    - design css each masonry row
+    - jinja toml read 
+    - extend and modularize base html for other indexes
+
+- [ ] custom fonts
+- [ ] custom cursor 
+
 - [ ] html/css templating | 2026-04-22 01:09 > 
     - [ ] Home page
-        - [x] About me
         - [ ] Project demos 
-        - Cow moo on click
-        - hover nav text effects
+
     - base template to hold base jinja template
     - Web structure
         - Guestbooks

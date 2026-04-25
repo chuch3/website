@@ -248,4 +248,5 @@ dependencies = [
  "mime",
  "minijinja",
  "new_mime_guess",
+ "serde",
 ]
