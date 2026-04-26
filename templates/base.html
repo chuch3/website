@@ -28,11 +28,23 @@
 
         <div class="home-page-body">
             <div class="project-container">
+                <h3>projects~</h3>
+                <div class="masonry">
+                    
                 {% for p in page_context.projects %}
+                <a href="{{p.link}}">
                 <div class="project">
-                    <p>{{ p.link }}</p>
+                    <img src="{{p.src}}">
+                    <div class="project-content">
+                        {{p.name}}
+                        <p>{{ p.description }}</p>
+                        
+                    </div>
+                    <!-- tools here -->
                 </div>
+                </a>
                 {% endfor %}
+                </div>
                 <!--
                 <div class="construction">
                     <h2>
