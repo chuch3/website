@@ -70,17 +70,20 @@ nav {
 
 .project-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
     grid-template-rows: masonry;
     gap: 10px;
+    padding: 1rem;
     border-style: double;
     border-color: #7d7d7d;
     flex: 50%;
 }
 
-.project-text {
-    margin: 1rem;
+.project {
+    border-style: dotted;
 }
+
+
 
 .sidebar-container {
     border-style: double;

@@ -1,0 +1,37 @@
+[[projects]]
+src = "github.something"
+link = "if you can see this, it is working!"
+name = "projectdudu"
+description = "something we can write here!"
+tools = ["banana", "html"]
+
+[[projects]]
+src = "github.something"
+link = "if you can see this, it is working!"
+name = "projectdudu"
+description = "something we can write here!"
+tools = ["banana", "html"]
+
+[[projects]]
+src = "github.something"
+link = "if you can see this, it is working!"
+name = "projectdudu"
+description = "something we can write here!"
+tools = ["banana", "html"]
+
+[[projects]]
+src = "github.something"
+link = "if you can see this, it is working!"
+name = "projectdudu"
+description = "something we can write here!"
+tools = ["banana", "html"]
+
+[[projects]]
+src = "github.something"
+link = "if you can see this, it is working!"
+name = "projectdudu"
+description = "something we can write here!"
+tools = ["banana", "html"]
+
+
+

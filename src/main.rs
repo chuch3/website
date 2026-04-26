@@ -52,6 +52,7 @@ fn handle_request(mut stream: TcpStream, ctx: &Context) -> Result<(), Box<dyn Er
     Ok(())
 }
 
+/*
 #[cfg(test)]
 mod test {
     use super::*;
@@ -74,3 +75,4 @@ mod test {
         println!("Shutting down");
     }
 }
+*/

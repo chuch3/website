@@ -10,4 +10,5 @@ http-bytes = "0.1.0"
 new_mime_guess = "4.0.4"
 mime = "0.3.17"
 dotenv_codegen = "=0.15.0"
-serde = "1.0.228"
+serde = { version = "1.0.228", features = ["derive"]}
+toml = "1.1.2+spec-1.1.0"

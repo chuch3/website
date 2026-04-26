@@ -28,7 +28,10 @@ pub fn build_get_response(
     dbg!(&path_list);
 
     let (template, page_context) = match *path_list.get(0).unwrap_or(&"") {
-        "" => ("base.html", context! {}),
+        "" => {
+            let projects = &ctx.projects;
+            ("base.html", context! { projects })
+        }
         "static" => {
             let mime_type = new_mime_guess::from_path(uri_path).first_or(mime::TEXT_HTML);
 

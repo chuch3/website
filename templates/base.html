@@ -17,7 +17,6 @@
 <body>
     <div id="container">
         <a href="/"><img class="cat1" src="static/images/cat1.gif"></a>
-
         <nav>
             <ul class="nav-pages">
                 <li><a href="/">home</a></li>
@@ -29,11 +28,13 @@
 
         <div class="home-page-body">
             <div class="project-container">
+                {% for p in page_context.projects %}
                 <div class="project">
-                    <img src="" alt="">
+                    <p>{{ p.link }}</p>
                 </div>
+                {% endfor %}
                 <!--
-                <div class="project-text">
+                <div class="construction">
                     <h2>
                         under construction !!! :(
                     </h2>
