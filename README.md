@@ -1,4 +1,6 @@
-### (WIP) personal website
+## (WIP) poly's web 
+
+![demo](demo/demo.gif) 
 
 #### TODO :
 
@@ -23,9 +25,9 @@ start time : 2026-04-18 14:15
 > 2026-04-25 15:32 > ...
 
 - [ ] masonry layout on projects, check breitnw and neocities 
-    - [ ] Jinja page descriptors
+    - [x] Jinja page descriptors
+    - [x] jinja toml read 
     - design css each masonry row
-    - jinja toml read 
     - extend and modularize base html for other indexes
 
 - [ ] custom fonts
