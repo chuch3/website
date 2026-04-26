@@ -3,34 +3,19 @@
 
 #### TODO :
 
-start time : 2026-04-18 14:15
+> Currently enduring front end hell! :)
 
-- [x] setup http/tcp suite 
-- [x] response with html
-- [x] multi-threaded server | 2026-04-18 19:46 > 2026-04-19 04:13
-- [x] cleanup | 2026-04-19 10:29 > 2026-04-19 11:33
-- [x] error handling 
+start project : 2026-04-18 14:15 (backend) > 2026-04-25 15:32 (frontend) > ...
 
-- [x] HTTP reponse handler with parser and designated html as response body 
-    - [x] basic frame of response builder | 2026-04-19 20:06 > 2026-04-20 01:59
-    - [x] creating jinja environment and context | 2026-04-19 22:51 > 2026-04-20 01:28
-    - [x] Add jinja and template bytes convertion on html body | 2026-04-20 14:09
-    - [x] Create response and write into tcp stream as bytes | 2026-04-20 18:12
-    - [x] Add mock template to test response and minijinja 
-- [x] Submit mime header and static resource into response when requested
-
-####  FRONT END HELL 
-
-> 2026-04-25 15:32 > ...
-
-- [ ] masonry layout on projects, check breitnw and neocities 
-    - [x] Jinja page descriptors
-    - [x] jinja toml read 
-    - design css each masonry row
-    - extend and modularize base html for other indexes
-
+- [ ] design css each masonry row
 - [ ] custom fonts
 - [ ] custom cursor 
+
+- masonry layout on projects, check breitnw and neocities 
+    - [x] Jinja page descriptors
+    - [x] jinja toml read 
+    - extend and modularize base html for other indexes
+
 
 - [ ] html/css templating | 2026-04-22 01:09 > 
     - [ ] Home page
@@ -60,6 +45,21 @@ start time : 2026-04-18 14:15
 
 > "Other options you might explore are the fork/join model, the single-threaded async I/O model, and the multithreaded async I/O model."
 
+### Done!
+
+- [x] setup http/tcp suite 
+- [x] response with html
+- [x] multi-threaded server | 2026-04-18 19:46 > 2026-04-19 04:13
+- [x] cleanup | 2026-04-19 10:29 > 2026-04-19 11:33
+- [x] error handling 
+
+- [x] HTTP reponse handler with parser and designated html as response body 
+    - [x] basic frame of response builder | 2026-04-19 20:06 > 2026-04-20 01:59
+    - [x] creating jinja environment and context | 2026-04-19 22:51 > 2026-04-20 01:28
+    - [x] Add jinja and template bytes convertion on html body | 2026-04-20 14:09
+    - [x] Create response and write into tcp stream as bytes | 2026-04-20 18:12
+    - [x] Add mock template to test response and minijinja 
+- [x] Submit mime header and static resource into response when requested
 
 ### Reference 
 
