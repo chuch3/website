@@ -1,6 +1,5 @@
 ## (WIP) poly's web 
 
-![demo](demo/demo.gif) 
 
 #### TODO :
 
