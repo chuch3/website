@@ -15,6 +15,12 @@
 </head>
 
 <body>
+    <div class="dark-mode-button">
+        <button onclick="document.body.classList.toggle('dark');">
+            click me!
+        </button>
+        <!-- TODO: add dark mode feature here! -->
+    </div>
     <div id="container">
         <a href="/"><img class="cat1" src="static/images/cat1.gif"></a>
         <nav>
@@ -30,29 +36,18 @@
             <div class="project-container">
                 <h3>projects~</h3>
                 <div class="masonry">
-                    
                 {% for p in page_context.projects %}
                 <a href="{{p.link}}">
-                <div class="project">
-                    <img src="{{p.src}}">
-                    <div class="project-content">
-                        {{p.name}}
-                        <p>{{ p.description }}</p>
-                        
+                    <div class="project">
+                        <img src="{{p.src}}">
+                        <div class="project-content">
+                             <p><b>{{p.name}}</b><br>{{ p.description }}</p>
+                        </div>
+                        <!-- TODO: add tool svgss here -->
                     </div>
-                    <!-- tools here -->
-                </div>
                 </a>
                 {% endfor %}
                 </div>
-                <!--
-                <div class="construction">
-                    <h2>
-                        under construction !!! :(
-                    </h2>
-                    <img style="width:8rem;height:8rem;" src="static/images/peng_comp.gif">
-                </div>
--->
             </div>
             <div class="sidebar-container">
                 <div class="about-me-text">

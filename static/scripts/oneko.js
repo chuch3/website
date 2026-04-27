@@ -131,13 +131,13 @@
 
         document.body.appendChild(nekoEl);
 
-        document.addEventListener("mousemove", function (event) {
+        document.addEventListener("mousemove", function(event) {
             mousePosX = event.clientX;
             mousePosY = event.clientY;
         });
 
         if (persistPosition) {
-            window.addEventListener("beforeunload", function (event) {
+            window.addEventListener("beforeunload", function(event) {
                 window.localStorage.setItem(
                     "oneko",
                     JSON.stringify({
@@ -209,7 +209,7 @@
             }
             idleAnimation =
                 avalibleIdleAnimations[
-                    Math.floor(Math.random() * avalibleIdleAnimations.length)
+                Math.floor(Math.random() * avalibleIdleAnimations.length)
                 ];
         }
 

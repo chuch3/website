@@ -2,7 +2,7 @@
 src = "static/images/projects/chestnut.png"
 link = "https://github.com/chuch3/chestnut"
 name = "chestnut"
-description = "Reinforcement learning chess engine with Monte Carlo Tree Search (MCTS) with pre-trained CNNs expert data."
+description = "Reinforcement learning chess engine with Monte Carlo Tree Search (MCTS) and pre-trained CNNs expert data."
 tools = ["PyTorch", "Python"]
 
 [[projects]]
@@ -33,5 +33,45 @@ name = "projectdudu"
 description = "something we can write here!"
 tools = ["banana", "html"]
 
+
+
+[[projects]]
+src = "github.something"
+link = "if you can see this, it is working!"
+name = "projectdudu"
+description = "something we can write here!"
+tools = ["banana", "html"]
+
+
+[[projects]]
+src = "github.something"
+link = "if you can see this, it is working!"
+name = "projectdudu"
+description = "something we can write here!"
+tools = ["banana", "html"]
+
+
+[[projects]]
+src = "github.something"
+link = "if you can see this, it is working!"
+name = "projectdudu"
+description = "something we can write here!"
+tools = ["banana", "html"]
+
+
+[[projects]]
+src = "github.something"
+link = "if you can see this, it is working!"
+name = "projectdudu"
+description = "something we can write here!"
+tools = ["banana", "html"]
+
+
+[[projects]]
+src = "github.something"
+link = "if you can see this, it is working!"
+name = "projectdudu"
+description = "something we can write here!"
+tools = ["banana", "html"]
 
 
