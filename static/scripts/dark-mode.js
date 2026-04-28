@@ -12,7 +12,6 @@ function toggleDarkMode() {
     var img = document.getElementsByTagName("img");
     for (let i = 0; i < img.length; i++) {
         img[i].classList.toggle("invert");
-
     }
     overlay.setAttribute("data-enabled", isDarkModeEnabled)
 }

@@ -36,23 +36,22 @@ img.invert {
     bottom: 0;
     left: 0;
     z-index: 1;
-    transform-origin: left bottom;
+    transform-origin: center;
     background-color: white;
     mix-blend-mode: difference;
     pointer-events: none;
 
     &[data-enabled="false"] {
-        scale: 0.05;
+        scale: 0.00;
         border-radius: 100%;
-        transition: scale .6s,
-            border-radius .6s;
+        transition: cubic-bezier(0.86, 0, 0.07, 1) .8s;
+
     }
 
     &[data-enabled="true"] {
         scale: 1;
         border-radius: 0;
-        transition: scale .6s,
-            border-radius .1s;
+        transition: cubic-bezier(0.86, 0, 0.07, 1) .8s;
     }
 }
 
@@ -69,7 +68,6 @@ nav {
     border-style: double;
     border-color: var(--border);
 }
-
 
 .cat1 {
     max-width: 50%;
@@ -103,6 +101,12 @@ nav {
     text-align: center;
     padding-right: 0.5rem;
     text-decoration: none;
+    color: var(--color);
+}
+
+.toggle {
+    border: none;
+    background: none;
     color: var(--color);
 }
 
