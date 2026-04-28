@@ -14,12 +14,12 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
 </head>
 
-<body>
+<body class="light">
+    <div class="overlay" data-enabled="false"></div>
     <div class="dark-mode-button">
-        <button onclick="document.body.classList.toggle('dark');">
+        <button class="toggle">
             click me!
         </button>
-        <!-- TODO: add dark mode feature here! -->
     </div>
     <div id="container">
         <a href="/"><img class="cat1" src="static/images/cat1.gif"></a>
@@ -78,6 +78,7 @@
     </div>
     <script src="static/scripts/oneko.js"></script>
     <script src="static/scripts/letter-span.js"></script>
+    <script src="static/scripts/dark-mode.js"></script>
 
 </body>
 

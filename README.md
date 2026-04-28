@@ -7,8 +7,7 @@
 
 start project : 2026-04-18 14:15 (backend) > 2026-04-25 15:32 (frontend) > ...
 
-- [ ] design css each masonry row
-    - Set proper format, order and spacing (need more space?) 
+- [ ] Scroll bar within masonry
 - [ ] custom fonts
 - [ ] custom cursor 
 

@@ -5,8 +5,55 @@ body {
     width: auto;
     margin-left: auto;
     margin-right: auto;
-    color: #545454;
     background: url("../static/images/noise.svg");
+    background-color: var(--background);
+}
+
+
+body.light {
+    --background: #e6e3e3;
+    --color: #575452;
+    --border: #575452;
+}
+
+body.dark {
+    --background: #1c1c1c;
+    --color: #ebe8e8;
+    --border: #ebe8e8;
+}
+
+img.invert {
+    filter: invert(1);
+}
+
+
+/* -- Code snippet by pookagehayes --
+* Ref : https://codepen.io/pookagehayes/pen/dyBPjGG */
+.overlay {
+    width: 100%;
+    aspect-ratio: 1;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    transform-origin: left bottom;
+    background-color: white;
+    mix-blend-mode: difference;
+    pointer-events: none;
+
+    &[data-enabled="false"] {
+        scale: 0.05;
+        border-radius: 100%;
+        transition: scale .6s,
+            border-radius .6s;
+    }
+
+    &[data-enabled="true"] {
+        scale: 1;
+        border-radius: 0;
+        transition: scale .6s,
+            border-radius .1s;
+    }
 }
 
 
@@ -20,6 +67,7 @@ nav {
     text-align: left;
     text-decoration: none;
     border-style: double;
+    border-color: var(--border);
 }
 
 
@@ -55,7 +103,7 @@ nav {
     text-align: center;
     padding-right: 0.5rem;
     text-decoration: none;
-    color: #636361;
+    color: var(--color);
 }
 
 .nav-pages li a span {
@@ -71,13 +119,12 @@ nav {
     gap: 10px;
     padding: 0rem 1.5rem 1.5rem;
     border-style: double;
-    border-color: #7d7d7d;
+    border-color: var(--border);
+    color: var(--color);
     flex: 50%;
 }
 
-.project-container h3 {
-    margin-bottom: 0.8rem
-}
+
 
 
 .masonry {
@@ -91,7 +138,7 @@ nav {
 
 .masonry a {
     text-decoration: none;
-    color: #636361;
+    color: var(--color);
 }
 
 .project {
@@ -112,21 +159,21 @@ nav {
 
 .sidebar-container {
     border-style: double;
-    border-color: #7d7d7d;
+    border-color: var(--border);
     max-height: 20rem;
     flex: 20%;
 }
 
 .about-me-text {
     margin: 0rem 1.5rem 1.5rem;
-    color: #262626;
-    border-color: #7d7d7d;
+    color: var(--color);
+    border-color: var(--border);
 }
 
 
 .footer {
     padding-top: 5rem;
-    color: #636361;
+    color: var(--color);
 }
 
 .footer-text {
@@ -135,7 +182,7 @@ nav {
 
 .footer-text a {
     text-decoration: none;
-    color: #636361;
+    color: var(--color);
 }
 
 .corner-friend {
@@ -151,13 +198,10 @@ nav {
 
 /* COLORS */
 
-.dark {
-    background-color: #1c1c1c;
-}
 
 .main-color {
-    border-color: #7d7d7d;
-    color: #636361;
+    border-color: var(--border);
+    color: var(--color);
 }
 
 
