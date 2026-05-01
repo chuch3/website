@@ -5,3 +5,10 @@ name = "chestnut"
 description = "Reinforcement learning chess engine with Monte Carlo Tree Search (MCTS) and pre-trained CNNs expert data."
 tools = ["PyTorch", "Python"]
 
+[[projects]]
+src = "static/images/projects/sparrow.gif"
+link = "https://github.com/chuch3/sparrow-rs"
+name = "sparrow-rs"
+description = "Simulation of a birds (\"sparrows\") foraging in groups. The behaviors of birds evolve over generations via genetic algorithm and neural networks, that enables flocking behavior and natural evolution."
+tools = ["Rust", "WebAssembly", "Javascript"]
+

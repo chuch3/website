@@ -110,6 +110,10 @@ nav {
     color: var(--color);
 }
 
+.toggle:active {
+    border: double;
+}
+
 .nav-pages li a span {
     display: inline-block;
 }
@@ -127,8 +131,6 @@ nav {
     color: var(--color);
     flex: 50%;
 }
-
-
 
 
 .masonry {
@@ -162,14 +164,13 @@ nav {
 }
 
 .sidebar-container {
-    border-style: double;
-    border-color: var(--border);
-    max-height: 20rem;
     flex: 20%;
 }
 
 .about-me-text {
-    margin: 0rem 1.5rem 1.5rem;
+    border-style: double;
+    border-color: var(--border);
+    padding: 0rem 1.5rem 1.5rem;
     color: var(--color);
     border-color: var(--border);
 }
