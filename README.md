@@ -1,13 +1,12 @@
-## poly's web 
+## poly's web 🚧
 
-a library of whimsy and work >:(
-
+personal website hosting all of my showcase projects 
 
 #### TODO :
 
 > Currently enduring front end hell! :)
 
-start project : 2026-04-18 14:15 (backend) > 2026-04-25 15:32 (frontend) > ...
+start project : 2026-04-18 14:15 (backend) > 2026-04-25 15:32 (frontend) > ... 
 
 - [ ] Scroll bar within masonry
 - [ ] custom fonts
