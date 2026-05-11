@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+
+<!-- my nasty html code. taken bit and bits from the world wide web. -->
+
+<head>
+    <base href="{{ BASE_URL }}">
+    <meta lang="en" charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>poly's site</title>
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+    <link rel="icon" href="static/favicons/favicon.ico">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+</head>
+
+<body class="light">
+    <div class="overlay" data-enabled="false"></div>
+    <div id="container">
+        <a href="/"><img class="cat1" src="static/images/cat1.gif"></a>
+        <nav>
+            <ul class="nav-pages">
+                <li><a href="/">home</a></li>
+                <li><a href="/">art</a></li>
+                <li><a href="/">notes</a></li>
+                <li><a href="/">guestbook</a></li>
+            </ul>
+            <button class="toggle"> <i class="far fa-moon"></i> </button>
+        </nav>
+
+        <div class="home-page-body">
+            <div class="project-container">
+                <h3>projects</h3>
+                <div class="masonry">
+                {% for p in page_context.projects %}
+                <a href="{{p.link}}">
+                    <div class="project">
+                        <img src="{{p.src}}">
+                        <div class="project-content">
+                             <p><b>{{p.name}}</b><br>{{ p.description }}</p>
+                        </div>
+                        <!-- TODO: add tool svgss here -->
+                    </div>
+                </a>
+                {% endfor %}
+                </div>
+            </div>
+            <div class="sidebar-container">
+                <div class="about-me-text">
+                    <h3>about me</h3>
+                    <p>
+                        a student in the programming space. love in ai/ml (without the slop), low-level interface, art, animals, and learning new thingamabobs.
+                        <br> <br>
+                        email : polychch3@<i>gmail</i>.com
+                        <br> <br>
+                        weathering @ xmum malaysia
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <td width="25%" valign="top">&nbsp;</td>
+        <div class="footer">
+            <p class="footer-text" height="20">
+                <a href="https://github.com/chuch3">
+                    <i class="fab fa-github"></i>
+                </a>
+                polych © 2026 and beyond
+            </p>
+        </div>
+
+        <div class="corner-friend">
+            <img src="static/images/cow.gif" alt="">
+        </div>
+    </div>
+    <script src="static/scripts/oneko.js"></script>
+    <script src="static/scripts/letter-span.js"></script>
+    <script src="static/scripts/dark-mode.js"></script>
+
+</body>
+
+
+</html>

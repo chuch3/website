@@ -1,0 +1,299 @@
+body {
+    display: flex;
+    padding: 1.5rem;
+    max-width: 60rem;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    background: url("../static/images/noise.svg");
+    background-color: var(--background);
+}
+
+
+body.light {
+    --background: #e6e3e3;
+    --color: #575452;
+    --border: #575452;
+}
+
+body.dark {
+    --background: #1c1c1c;
+    --color: #ebe8e8;
+    --border: #ebe8e8;
+}
+
+img.invert {
+    filter: invert(1);
+}
+
+
+/* -- Code snippet by pookagehayes --
+* Ref : https://codepen.io/pookagehayes/pen/dyBPjGG */
+.overlay {
+    width: 100%;
+    aspect-ratio: 1;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    transform-origin: center;
+    background-color: white;
+    mix-blend-mode: difference;
+    pointer-events: none;
+
+    &[data-enabled="false"] {
+        scale: 0.00;
+        border-radius: 100%;
+        transition: cubic-bezier(0.86, 0, 0.07, 1) .8s;
+
+    }
+
+    &[data-enabled="true"] {
+        scale: 1;
+        border-radius: 0;
+        transition: cubic-bezier(0.86, 0, 0.07, 1) .8s;
+    }
+}
+
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 0.8rem;
+    text-align: left;
+    text-decoration: none;
+    border-style: double;
+    border-color: var(--border);
+}
+
+.cat1 {
+    max-width: 50%;
+    transition: 0.2s;
+    transition-timing-function: ease-out;
+    image-rendering: pixelated;
+}
+
+.cat1:hover {
+    scale: 1.5 0.76;
+}
+
+.home-page-body {
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-pages {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+}
+
+.nav-pages li {
+    float: left;
+}
+
+.nav-pages li a {
+    display: block;
+    text-align: center;
+    padding-right: 0.5rem;
+    text-decoration: none;
+    color: var(--color);
+}
+
+.toggle {
+    border: none;
+    background: none;
+    color: var(--color);
+}
+
+.toggle:active {
+    transform: translateY(4px);
+}
+
+.nav-pages li a span {
+    display: inline-block;
+}
+
+.nav-pages li a:hover span {
+    animation: wavy 1.5s ease infinite, rainbow 1s linear infinite;
+}
+
+
+.project-container {
+    gap: 10px;
+    padding: 0rem 1.5rem 1.5rem;
+    border-style: double;
+    border-color: var(--border);
+    color: var(--color);
+    flex: 50%;
+}
+
+
+.masonry {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    grid-template-rows: masonry;
+    gap: 1rem;
+    padding: 0.5rem;
+    flex: 50%;
+}
+
+.masonry a {
+    text-decoration: none;
+    color: var(--color);
+}
+
+.project {
+    display: flex;
+    flex-direction: column;
+    border-style: double;
+}
+
+.project p {
+    margin: 1rem;
+}
+
+.project img {
+    padding: 1rem 1rem 0rem 1rem;
+    max-height: 20rem;
+    max-width: auto;
+}
+
+.sidebar-container {
+    flex: 20%;
+}
+
+.about-me-text {
+    border-style: double;
+    border-color: var(--border);
+    padding: 0rem 1.5rem 1.0rem;
+    color: var(--color);
+    border-color: var(--border);
+}
+
+
+.footer {
+    padding-top: 5rem;
+    color: var(--color);
+}
+
+.footer-text {
+    text-align: center;
+}
+
+.footer-text a {
+    text-decoration: none;
+    color: var(--color);
+}
+
+.corner-friend {
+    position: absolute;
+    right: 3rem;
+    bottom: 3rem;
+}
+
+.corner-friend:hover {
+    animation: shake 0.5s infinite;
+}
+
+
+/* COLORS */
+
+
+.main-color {
+    border-color: var(--border);
+    color: var(--color);
+}
+
+
+/* ANIMATIONS */
+
+
+@keyframes shake {
+    0% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+
+    10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+    }
+
+    20% {
+        transform: translate(-3px, 0px) rotate(1deg);
+    }
+
+    30% {
+        transform: translate(3px, 2px) rotate(0deg);
+    }
+
+    40% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+
+    50% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+    }
+
+    60% {
+        transform: translate(-3px, 1px) rotate(0deg);
+    }
+
+    70% {
+        transform: translate(3px, 1px) rotate(-1deg);
+    }
+
+    80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+    }
+
+    90% {
+        transform: translate(1px, 2px) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(1px, -2px) rotate(-1deg);
+    }
+}
+
+
+@keyframes wavy {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-0.5rem);
+    }
+}
+
+
+@keyframes rainbow {
+
+    100%,
+    0% {
+        color: #C0C0C0;
+    }
+
+    20% {
+        color: #A9A9A9;
+    }
+
+    40% {
+        color: #808080;
+    }
+
+    60% {
+        color: #696969;
+    }
+
+    80% {
+        color: #2F4F4F;
+    }
+
+}
