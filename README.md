@@ -1,4 +1,6 @@
-## (WIP) poly's web 
+## poly's web 
+
+a library of whimsy and work >:(
 
 
 #### TODO :

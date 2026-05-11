@@ -111,7 +111,7 @@ nav {
 }
 
 .toggle:active {
-    border: double;
+    transform: translateY(4px);
 }
 
 .nav-pages li a span {
@@ -170,7 +170,7 @@ nav {
 .about-me-text {
     border-style: double;
     border-color: var(--border);
-    padding: 0rem 1.5rem 1.5rem;
+    padding: 0rem 1.5rem 1.0rem;
     color: var(--color);
     border-color: var(--border);
 }
