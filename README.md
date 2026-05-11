@@ -1,26 +1,27 @@
 ## poly's web 🚧
 
-personal website hosting all of my showcase projects 
+personal domain/library/website to dropoff projects in this microworld of an internet
 
-#### TODO :
+### TODO
 
 > Currently enduring front end hell! :)
 
-start project : 2026-04-18 14:15 (backend) > 2026-04-25 15:32 (frontend) > ... 
+start project : 
+- 2026-04-18 14:15 (backend) 
+- 2026-04-25 15:32 (frontend)  
+- 2026-05-12 02:45 (unfinished, but first hosting! yaaaay)
 
 - [ ] Scroll bar within masonry
 - [ ] custom fonts
 - [ ] custom cursor 
+- [ ] implement HTTPS protocol (TLS and SSL certificates) with `rustls`
+    - OpenSSL web security 
+
 
 - masonry layout on projects, check breitnw and neocities 
-    - [x] Jinja page descriptors
-    - [x] jinja toml read 
     - extend and modularize base html for other indexes
 
-
-- [ ] html/css templating | 2026-04-22 01:09 > 
-    - [ ] Home page
-        - [ ] Project demos 
+- html/css templating | 2026-04-22 01:09 > 
 
     - base template to hold base jinja template
     - Web structure
@@ -28,19 +29,19 @@ start project : 2026-04-18 14:15 (backend) > 2026-04-25 15:32 (frontend) > ...
         - Blog post for progress
         - Social links
         - collage with card based template
-- [ ] Set base url to take on environment var host url
-
-- [ ] implement HTTPS protocol (TLS and SSL certificates) with `rustls`
-
-- [ ] Host on github
-    - [ ] Base URL and path on open graph base.html and global variable for jinja environment
-
 
 > Compiler-Driven developement with errors to guide funcionality, focusing on client API design over implementation (top-to-down approach).
 
-#### Future Features
+### Bugs 
 
-- OpenSSL web security 
+- [ ] Fix corner friend (cow gif) position in mobile phones or adjusted screens
+- [ ] Set base url to take on environment var host url
+- [ ] Base URL and path on open graph base.html and global variable for jinja environment
+
+### Future Features
+
+- better home page and project card designs (abstract deadline)
+
 - Async
 - Experiment with `Futures` over closures
 
@@ -61,6 +62,9 @@ start project : 2026-04-18 14:15 (backend) > 2026-04-25 15:32 (frontend) > ...
     - [x] Create response and write into tcp stream as bytes | 2026-04-20 18:12
     - [x] Add mock template to test response and minijinja 
 - [x] Submit mime header and static resource into response when requested
+
+- [x] Jinja page descriptors
+- [x] jinja toml read 
 
 ### Reference 
 
