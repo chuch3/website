@@ -31,18 +31,29 @@
         <div class="home-page-body">
             <div class="project-container">
                 <h3>projects</h3>
+
+                currently under construction! and no VPS yet ( ;´ - `;)
+
                 <div class="masonry">
-                {% for p in page_context.projects %}
-                <a href="{{p.link}}">
+
+                <a href="https://github.com/chuch3/chestnut">
                     <div class="project">
-                        <img src="{{p.src}}">
+                        <img src="static/images/projects/chestnut.gif">
                         <div class="project-content">
-                             <p><b>{{p.name}}</b><br>{{ p.description }}</p>
+                             <p><b>chestnut</b><br>AlphaZero-inspired reinforcement learning chess engine with policy-value networks, PUCT-MCTS, and supervised CNNs expert data. </p>
                         </div>
-                        <!-- TODO: add tool svgss here -->
                     </div>
                 </a>
-                {% endfor %}
+
+                <a href="https://github.com/chuch3/sparrow-rs">
+                    <div class="project">
+                        <img src="static/images/projects/sparrow.gif">
+                        <div class="project-content">
+                             <p><b>sparrow-rs</b><br>Natural simulation of birds (\"sparrows\") foraging in groups, evolving over generations via genetic algorithm and neural networks. </p>
+                        </div>
+                    </div>
+                </a>
+
                 </div>
             </div>
             <div class="sidebar-container">
